@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTLKND</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .neon-text {
+            font-size: 150px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700, 0 0 20px #FFD700;
+            animation: pulse 2s infinite;
+            text-align: center;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 5;
+        }
+        
+        .credits-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            white-space: normal;
+            line-height: 1.6;
+            padding: 20px;
+            transform: translateY(100vh);
+            transition: transform 50s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 50 Sekunden Dauer */
+            z-index: 15;
+            opacity: 0;
+        }
+        
+        .show-image {
+            opacity: 1 !important;
+        }
+        
+        .show-credits {
+            transform: translateY(-100vh) !important;
+            opacity: 1 !important;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        @media (max-width: 768px) {
+            .neon-text { font-size: 100px; }
+            .credits-text { font-size: 30px; padding: 15px; }
+        }
+        
+        @media (max-width: 480px) {
+            .neon-text { font-size: 70px; }
+            .credits-text { font-size: 24px; padding: 10px; }
+        }
+        
+        @media (max-width: 320px) {
+            .neon-text { font-size: 50px; }
+            .credits-text { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-text">FTLKND</div>
+    <img id="fullscreenImage" class="fullscreen-image" src="party2.jpg" alt="Bild">
+    <div id="creditsText" class="credits-text">
+        FNTLKND 2026<br>
+        Frank, Stephan, Klausi, Pongo,<br>
+        Matze, Tomi, Icke und Benno:<br><br>
+        Wir bringen Durst mit, Charme im Gepäck <br>
+        und 'nen Spruch, der sitzt - meistens ganz keck.<br><br>
+        Acht Jungs, ein Ziel, die Stimmung am Beben,<br>
+        wenn wir auftauchen, fängt die Party erst an zu leben.<br><br>
+        Mädels, keine Sorge - wir beißen nicht... <br>
+        außer ihr wollt's!<br><br>
+        <br><br>
+        Bei Hilflosigkeit bitte ansprechen!<br>
+        Ab 21.00 Uhr zu jeder vollen Stunde an der Cocktail-Bar.<br><br>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            const neonText = document.querySelector('.neon-text');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            const creditsText = document.getElementById('creditsText');
+            
+            neonText.style.display = 'none';
+            fullscreenImage.classList.add('show-image');
+            
+            setTimeout(function() {
+                creditsText.classList.add('show-credits');
+            }, 500);
+        }, 2000);
+    </script>
+</body>
+</html>
+
+
